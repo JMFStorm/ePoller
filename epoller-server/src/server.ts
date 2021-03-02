@@ -8,7 +8,7 @@ import pollsRouter from "./routes/polls";
 import { connect } from "./utils/database";
 
 connect
-  .then((connection) => {
+  .then(async () => {
     console.log("Database connected");
   })
   .catch((error) => {
