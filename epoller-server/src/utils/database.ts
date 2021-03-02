@@ -1,6 +1,8 @@
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import path from "path";
+
+import Option from "../models/Option";
+import Poll from "../models/Poll";
 
 import {
   dbUser,
@@ -11,14 +13,6 @@ import {
   dbUrl,
 } from "../utils/config";
 
-let synchronizeOption: boolean = true;
-
-// Get entities path
-let entitiesPath: string = "";
-if (require.main) {
-  entitiesPath = path.dirname(require.main.filename) + "\\models\\*.js";
-}
-
 // Database connection
 export const connect = createConnection({
   type: "postgres",
@@ -28,8 +22,8 @@ export const connect = createConnection({
   username: dbUser,
   password: dbPassword,
   database: dbName,
-  entities: [entitiesPath],
-  synchronize: synchronizeOption,
+  entities: [Option, Poll],
+  synchronize: true,
   logging: ["error", "warn", "info"],
   ssl: {
     rejectUnauthorized: false,
