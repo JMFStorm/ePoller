@@ -11,10 +11,10 @@ export const getPolls: RequestHandler = async (req, res, next) => {
   try {
     const response: Poll[] | void = await pollService.getPolls();
     if (!response) {
-      return next(new HttpError(500, `Get polls failed`));
+      return next(new HttpError(404, `Get polls failed`));
     }
 
-    return res.json({ polls: response });
+    return res.json(response);
   } catch (err) {
     // Error
     return next(new HttpError(500, `Error: ${err.message}`));
@@ -27,7 +27,7 @@ export const getPoll: RequestHandler = async (req, res, next) => {
     const pollId = Number(req.params.pollId);
     const response: Poll | void = await pollService.getPollById(pollId);
     if (!response) {
-      return next(new HttpError(500, `Couldn't find poll`));
+      return next(new HttpError(404, `Couldn't find poll`));
     }
 
     return res.json(response);
@@ -53,7 +53,7 @@ export const addPoll: RequestHandler = async (req, res, next) => {
 
     const newPoll = await pollService.getPollById(response.pollId);
 
-    return res.send(newPoll);
+    return res.status(201).send(newPoll);
   } catch (err) {
     // Error
     return next(new HttpError(500, `Error: ${err.message}`));
@@ -68,7 +68,7 @@ export const votePoll: RequestHandler = async (req, res, next) => {
 
     const newPoll = await pollService.voteForOption(optionId);
     if (!newPoll) {
-      return next(new HttpError(500, `Vote failed`));
+      return next(new HttpError(400, `Option id not found`));
     }
     const updatedPoll = await pollService.getPollById(pollId);
 
@@ -90,7 +90,7 @@ export const deletePoll: RequestHandler = async (req, res, next) => {
     }
     const result: Poll = await pollService.deletePoll(poll);
 
-    return res.json({ deleted: result });
+    return res.json("Deleted");
   } catch (err) {
     // Error
     return next(new HttpError(500, `Error: ${err.message}`));

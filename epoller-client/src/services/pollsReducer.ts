@@ -9,7 +9,7 @@ const AddPoll = (poll: Poll, state: State): State => {
 // Delete poll action
 const DeletePoll = (id: number, state: State): State => {
   const newPolls = state.polls.filter((currentPoll) =>
-    currentPoll.id === id ? false : true
+    currentPoll.pollId === id ? false : true
   );
   return { polls: newPolls };
 };

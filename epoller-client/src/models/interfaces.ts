@@ -1,19 +1,19 @@
 // Interface option
 export interface Option {
-  id: number;
+  optionId: number;
   title: string;
   votes: number;
 }
 
 // Interface poll
 export interface Poll {
-  id: number;
+  pollId: number;
   title: string;
 }
 
 // Interface poll view
 export interface PollView {
-  id: number;
+  pollId: number;
   title: string;
   options: Option[];
 }

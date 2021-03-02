@@ -7,31 +7,22 @@ import { AddPoll } from "../services/api";
 import { AppContext } from "../services/AppContext";
 
 const CreatePoll: FC = () => {
-  // useHistory
   const history = useHistory();
-
-  // AppContext
   const { setSelectedPage, statePolls, dispatch } = useContext(AppContext);
+
+  // React Hook Form
+  const { register, handleSubmit } = useForm<FormData>();
+
+  const [optionInputs, setOptionInputs] = useState<string[]>(["", ""]);
+  const [submitLoading, setSubmitLoading] = useState<boolean>(false);
+  const [notUniqueTitle, setNotUniqueTitle] = useState<boolean>(false);
+  const [notUniqueOptions, setNotUniqueOptions] = useState<boolean>(false);
 
   // Form data type
   type FormData = {
     title: string;
     options: string[];
   };
-  // React Hook Form
-  const { register, handleSubmit } = useForm<FormData>();
-
-  // Add options input state
-  const [optionInputs, setOptionInputs] = useState<string[]>(["", ""]);
-
-  // Submit loading state
-  const [submitLoading, setSubmitLoading] = useState<boolean>(false);
-
-  // Error not unque title
-  const [notUniqueTitle, setNotUniqueTitle] = useState<boolean>(false);
-
-  // Error not unque options
-  const [notUniqueOptions, setNotUniqueOptions] = useState<boolean>(false);
 
   //Check valid inputs function
   const checkUniqueOptions = (options: string[], title: string) => {
@@ -82,7 +73,7 @@ const CreatePoll: FC = () => {
     }
     // Add new poll
     const result: PollView = await AddPoll(newPoll);
-    const newPollItem: Poll = { title: result.title, id: result.id };
+    const newPollItem: Poll = { title: result.title, pollId: result.pollId };
 
     // Dispatch add poll
     dispatch({

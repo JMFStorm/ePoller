@@ -47,12 +47,12 @@ const ListPolls: FC = () => {
         <ul className="poll-list">
           {statePolls.polls.map((poll: Poll) => {
             return (
-              <li className="poll-list__item" key={poll.id}>
-                <Link to={`/list-polls/${poll.id}`}>{poll.title}</Link>
+              <li className="poll-list__item" key={poll.pollId}>
+                <Link to={`/list-polls/${poll.pollId}`}>{poll.title}</Link>
                 <button
                   className="poll-list__button"
                   disabled={deleting}
-                  onClick={(e) => deletePollHandle(poll.id, poll.title)}
+                  onClick={(e) => deletePollHandle(poll.pollId, poll.title)}
                 >
                   Delete
                 </button>

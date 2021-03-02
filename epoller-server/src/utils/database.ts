@@ -23,5 +23,5 @@ export const connect = createConnection({
   database: "database.sqlite",
   entities: [entitiesPath],
   synchronize: synchronizeOption,
-  logging: ["schema", "error", "warn", "log"],
+  logging: ["error", "warn"],
 });

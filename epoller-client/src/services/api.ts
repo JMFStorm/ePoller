@@ -1,11 +1,13 @@
 import axios, { AxiosResponse } from "axios";
 import { NewPoll, Poll, PollView } from "../models/interfaces";
 
-import { baseURL } from "../utils/config";
+import { baseUrl } from "../utils/config";
 
 // Get all polls
 export const getAllPolls: () => Promise<Poll[]> = async () => {
-  const response: AxiosResponse<Poll[]> = await axios.get<Poll[]>(`${baseURL}/polls`);
+  const response: AxiosResponse<Poll[]> = await axios.get<Poll[]>(
+    `${baseUrl}api/polls`
+  );
   return response.data;
 };
 
@@ -14,15 +16,17 @@ export const getPoll: (pollsId: number) => Promise<PollView> = async (
   pollsId: number
 ) => {
   const response: AxiosResponse<PollView> = await axios.get<PollView>(
-    `${baseURL}/polls/${pollsId}`
+    `${baseUrl}api/polls/${pollsId}`
   );
   return response.data;
 };
 
 // Add new poll
-export const AddPoll: (poll: NewPoll) => Promise<PollView> = async (poll: NewPoll) => {
+export const AddPoll: (poll: NewPoll) => Promise<PollView> = async (
+  poll: NewPoll
+) => {
   const response: AxiosResponse<PollView> = await axios.post<PollView>(
-    `${baseURL}/polls/add`,
+    `${baseUrl}api/polls/`,
     poll
   );
   return response.data;
@@ -34,7 +38,7 @@ export const VoteForOption: (
   pollsId: number
 ) => Promise<PollView> = async (optionId: number, pollsId: number) => {
   const response: AxiosResponse<PollView> = await axios.post<PollView>(
-    `${baseURL}/polls/${pollsId}/vote/${optionId}`
+    `${baseUrl}api/polls/${pollsId}/vote/${optionId}`
   );
   return response.data;
 };
@@ -44,7 +48,7 @@ export const DeletePoll: (pollsId: number) => Promise<boolean> = async (
   pollsId: number
 ) => {
   const response: AxiosResponse<boolean> = await axios.delete<boolean>(
-    `${baseURL}/polls/${pollsId}`
+    `${baseUrl}api/polls/${pollsId}`
   );
   return response.data;
 };

@@ -41,14 +41,12 @@ const ViewPoll: FC = () => {
 
   // Vote for option
   const handleVote: () => Promise<void> = async () => {
-    console.log("vote");
     // Check if nulls
     if (!poll || !optionId) {
-      console.log("no vote");
       return;
     }
     // Post vote
-    const pollsId: number = poll.id;
+    const pollsId: number = poll.pollId;
     setSubmitLoading(true);
     const response: PollView = await VoteForOption(optionId, pollsId);
 
@@ -69,14 +67,14 @@ const ViewPoll: FC = () => {
           {/* List poll options */}
           <ul className="option-list">
             {poll.options.map((option, index) => (
-              <li className="option-list__item" key={option.id}>
+              <li className="option-list__item" key={option.optionId}>
                 {!userHasVoted && (
                   <input
                     className="input"
-                    onClick={(e) => setOptionId(option.id)}
+                    onClick={(e) => setOptionId(option.optionId)}
                     type="radio"
                     name="option"
-                    value={option.id}
+                    value={option.optionId}
                   ></input>
                 )}
                 <label className="label">

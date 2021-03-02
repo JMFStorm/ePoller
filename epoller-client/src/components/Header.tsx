@@ -21,7 +21,7 @@ const Header: FC = () => {
   return (
     <header className="header">
       <div className="header__title">
-        <h1 className="title h1">ePoll</h1>
+        <h1 className="title h1">ePoller</h1>
       </div>
       <nav className="header__nav">
         <ul className="nav-list">

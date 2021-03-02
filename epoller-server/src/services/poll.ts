@@ -19,7 +19,6 @@ export default class PollService {
           votes: 0,
           poll: newPoll,
         });
-        console.log(newOption, i);
         await newOption.save();
       }
       return pollResponse;
@@ -33,7 +32,7 @@ export default class PollService {
     const poll = await Poll.findOne({ pollId }, { relations: ["options"] });
 
     if (!poll) {
-      throw new Error("Invalid poll id");
+      return;
     }
     return poll;
   }
