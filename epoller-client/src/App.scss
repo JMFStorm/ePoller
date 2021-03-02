@@ -1,0 +1,355 @@
+/* RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* VARIABLES */
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+
+$primary-color: blueviolet;
+$primary-color-dark: rgb(120, 38, 196);
+$font-serif: "Merriweather", serif;
+$font-sans-serif: "Noto Sans JP", sans-serif;
+
+/* HTML & BODY */
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0rem;
+  font-family: $font-sans-serif;
+}
+
+/* GLOBAL ELEMENTS */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  padding: 0 1rem;
+  max-width: 50rem;
+  margin: 4em 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 2rem;
+  font-family: $font-serif;
+}
+.h1 {
+  font-size: 3.8rem;
+  font-family: $font-sans-serif;
+}
+.h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1em;
+  max-width: 40ch;
+}
+input,
+button {
+  font-size: 1.6rem;
+  font-family: $font-sans-serif;
+}
+
+/* GET BACK BUTTON */
+.get-back {
+  margin: 1rem 0 1rem 0;
+}
+
+/* HEADER */
+.header {
+  .header__title {
+    padding: 0 1rem;
+    background-color: $primary-color;
+    color: white;
+  }
+  .header__nav {
+    margin: 3em 0;
+    margin-bottom: auto;
+
+    .nav-list {
+      max-width: 35rem;
+      margin: auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+      .nav-list__item {
+        list-style: none;
+        a {
+          color: $primary-color-dark;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* POLLS LIST */
+.page-wrapper--list-polls {
+  width: 100%;
+  .poll-list {
+    .poll-list__item {
+      margin: 2.5em 0;
+      display: flex;
+      list-style: none;
+      a {
+        text-decoration: none;
+        color: $primary-color-dark;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .poll-list__button {
+      margin: auto;
+      margin-right: 0;
+      color: white;
+      background-color: $primary-color;
+    }
+  }
+}
+
+/* VIEW POLL */
+.page-wrapper--view-poll {
+  max-width: 65rem;
+  width: 100%;
+}
+.vote-container {
+  .h2 {
+    font-size: 2rem;
+  }
+  .option-list {
+    font-size: 1.5rem;
+    .option-list__item {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      list-style: none;
+      margin: 1.5em 0;
+      .input {
+        display: inline-block;
+        width: 5rem;
+        flex-basis: 5rem;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+      .label {
+        padding: 0 1em 0 0;
+        .label__index {
+          margin-right: 1em;
+        }
+      }
+      .span {
+        margin-left: auto;
+        min-width: 8rem;
+      }
+    }
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-weight: 700;
+    justify-content: space-evenly;
+    gap: 1em;
+    margin-top: 5em;
+    text-align: center;
+  }
+  .vote-button {
+    color: white;
+    background-color: $primary-color;
+    padding: 0.25em 0.5em;
+  }
+}
+
+/* Bigger fonts */
+@media (min-width: 390px) {
+  .vote-container {
+    .h2 {
+      font-size: 2.8rem;
+    }
+    .option-list {
+      font-size: 2rem;
+    }
+  }
+}
+
+/* NEW POLL FORM */
+.page-wrapper--create-new {
+  width: 100%;
+}
+form {
+  label {
+    display: block;
+    font-size: 2.2rem;
+  }
+  .form__title,
+  .option {
+    .option__label {
+      font-size: 1.6rem;
+    }
+  }
+  .form__title {
+    margin-bottom: 4rem;
+    .textarea {
+      font-family: $font-sans-serif;
+      font-size: 1.8rem;
+      width: 100%;
+      resize: vertical;
+      min-height: 3rem;
+      max-height: 7.5rem;
+    }
+  }
+  .option {
+    .input {
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      width: 100%;
+    }
+  }
+  .button-group {
+    margin: 0rem 0 2em 0;
+    .info {
+      margin-bottom: 1em;
+    }
+    .button-group__info {
+      margin: 1rem 0;
+    }
+    .button-group__button {
+      font-size: 1.4rem;
+      &:nth-child(1) {
+        margin-right: 1em;
+      }
+    }
+  }
+  .poll-submit {
+    .poll-submit__button {
+      color: white;
+      padding: 0.25em 0.5em;
+      background-color: $primary-color;
+    }
+  }
+}
+.error {
+  color: red;
+  margin: 0.25em 0 0.5em 0;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: auto;
+  color: white;
+  background-color: $primary-color;
+  padding: 0.5em 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .footer__item {
+    font-size: 1.8rem;
+    &:last-child {
+      margin-left: auto;
+    }
+  }
+}
