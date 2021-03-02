@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
-require("reflect-metadata");
 const config_1 = require("./utils/config");
 const errorHandler_1 = require("./error/errorHandler");
 const polls_1 = __importDefault(require("./routes/polls"));

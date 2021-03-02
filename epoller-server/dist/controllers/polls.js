@@ -56,8 +56,14 @@ exports.addPoll = (req, res, next) => __awaiter(this, void 0, void 0, function* 
 });
 exports.votePoll = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     try {
-        console.log("vote poll");
-        return res.json("Vote");
+        const optionId = Number(req.params.optionId);
+        const pollId = Number(req.params.pollId);
+        const newPoll = yield pollService.voteForOption(optionId);
+        if (!newPoll) {
+            return next(new HttpError_1.default(500, `Vote failed`));
+        }
+        const updatedPoll = yield pollService.getPollById(pollId);
+        return res.send(updatedPoll);
     }
     catch (err) {
         return next(new HttpError_1.default(500, `Error: ${err.message}`));

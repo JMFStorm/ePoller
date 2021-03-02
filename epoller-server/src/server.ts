@@ -1,8 +1,6 @@
 import express from "express";
 import cors from "cors";
 import path from "path";
-import "reflect-metadata";
-import { createConnection } from "typeorm";
 
 import { serverPort } from "./utils/config";
 import { errorHandler } from "./error/errorHandler";

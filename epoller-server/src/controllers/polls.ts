@@ -63,8 +63,16 @@ export const addPoll: RequestHandler = async (req, res, next) => {
 // Vote poll
 export const votePoll: RequestHandler = async (req, res, next) => {
   try {
-    console.log("vote poll");
-    return res.json("Vote");
+    const optionId = Number(req.params.optionId);
+    const pollId = Number(req.params.pollId);
+
+    const newPoll = await pollService.voteForOption(optionId);
+    if (!newPoll) {
+      return next(new HttpError(500, `Vote failed`));
+    }
+    const updatedPoll = await pollService.getPollById(pollId);
+
+    return res.send(updatedPoll);
   } catch (err) {
     // Error
     return next(new HttpError(500, `Error: ${err.message}`));
@@ -80,7 +88,6 @@ export const deletePoll: RequestHandler = async (req, res, next) => {
     if (!poll) {
       return res.send("Already deleted");
     }
-
     const result: Poll = await pollService.deletePoll(poll);
 
     return res.json({ deleted: result });

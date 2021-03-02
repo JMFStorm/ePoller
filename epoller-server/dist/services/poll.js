@@ -41,7 +41,7 @@ class PollService {
         return __awaiter(this, void 0, void 0, function* () {
             const poll = yield Poll_1.default.findOne({ pollId }, { relations: ["options"] });
             if (!poll) {
-                return;
+                throw new Error("Invalid poll id");
             }
             return poll;
         });
@@ -53,6 +53,17 @@ class PollService {
                 return;
             }
             return polls;
+        });
+    }
+    voteForOption(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let option = yield Option_1.default.findOne({ optionId: id });
+            if (!option) {
+                return;
+            }
+            option.votes += 1;
+            const response = yield option.save();
+            return response;
         });
     }
     deletePoll(poll) {

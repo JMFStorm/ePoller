@@ -33,7 +33,7 @@ export default class PollService {
     const poll = await Poll.findOne({ pollId }, { relations: ["options"] });
 
     if (!poll) {
-      return;
+      throw new Error("Invalid poll id");
     }
     return poll;
   }
@@ -45,6 +45,17 @@ export default class PollService {
       return;
     }
     return polls;
+  }
+
+  async voteForOption(id: number): Promise<Option | void> {
+    let option: Option | undefined = await Option.findOne({ optionId: id });
+
+    if (!option) {
+      return;
+    }
+    option.votes += 1;
+    const response = await option.save();
+    return response;
   }
 
   async deletePoll(poll: Poll): Promise<Poll> {
