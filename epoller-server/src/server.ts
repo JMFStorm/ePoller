@@ -31,6 +31,15 @@ app.use(express.static(build));
 // Use routes
 app.use("/api/polls", pollsRouter);
 
+// Redirect on refresh
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build/index.html"), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
 // Use error handler endpoint
 app.use(errorHandler);
 
