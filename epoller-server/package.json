@@ -21,7 +21,10 @@
   },
   "scripts": {
     "watch": "tsc -w",
+    "dev": "nodemon dist/server.js",
     "start": "node dist/server.js",
-    "dev": "nodemon dist/server.js"
+    "postinstall": "tsc && mv -v build dist/",
+    "build:ui": "rmdir /S build && mkdir build && cd ../epoller-client && npm run build && Xcopy /s .\\build ..\\epoller-server\\build\\",
+    "deploy": "git add . && git commit -m deploy && git push heroku master"
   }
 }
