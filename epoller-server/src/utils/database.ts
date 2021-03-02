@@ -11,12 +11,7 @@ import {
   dbUrl,
 } from "../utils/config";
 
-let synchronizeOption: boolean = false;
-
-// Check NODE_ENV
-if (process.env.NODE_ENV === "development") {
-  synchronizeOption = true;
-}
+let synchronizeOption: boolean = true;
 
 // Get entities path
 let entitiesPath: string = "";
