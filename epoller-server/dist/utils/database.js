@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === "development") {
 }
 let entitiesPath = "";
 if (require.main) {
-    entitiesPath = path_1.default.dirname(require.main.filename) + "\\entity\\*.js";
+    entitiesPath = path_1.default.dirname(require.main.filename) + "\\models\\*.js";
 }
 console.log("entitiesPath", entitiesPath);
 exports.connect = typeorm_1.createConnection({

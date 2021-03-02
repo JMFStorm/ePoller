@@ -1,5 +1,5 @@
-import Poll from "../entity/Poll";
-import Option from "../entity/Option";
+import Poll from "../models/Poll";
+import Option from "../models/Option";
 
 // Poll service
 export default class PollService {

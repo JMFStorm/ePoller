@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === "development") {
 // Get entities path
 let entitiesPath: string = "";
 if (require.main) {
-  entitiesPath = path.dirname(require.main.filename) + "\\entity\\*.js";
+  entitiesPath = path.dirname(require.main.filename) + "\\models\\*.js";
 }
 
 console.log("entitiesPath", entitiesPath);

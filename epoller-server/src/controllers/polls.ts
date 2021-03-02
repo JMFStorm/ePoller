@@ -2,7 +2,7 @@ import { RequestHandler } from "express";
 
 import HttpError from "../error/HttpError";
 import PollService from "../services/poll";
-import Poll from "../entity/Poll";
+import Poll from "../models/Poll";
 
 const pollService = new PollService();
 
