@@ -5,3 +5,4 @@ tmp/
 temp/
 *.rest
 .env
+dist/
