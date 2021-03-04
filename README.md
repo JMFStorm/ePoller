@@ -2,6 +2,10 @@
 
 **See this app in live action: [https://epoller-react-app.herokuapp.com/]**
 
+## Todos:
+
+- Add about page
+
 ## About:
 
 - React client
