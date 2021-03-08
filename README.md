@@ -6,7 +6,11 @@
 
 - Add about page
 
-## About:
+## About
+
+Create useless polls and vote.
+
+## Created with:
 
 - React client
 - Node server
