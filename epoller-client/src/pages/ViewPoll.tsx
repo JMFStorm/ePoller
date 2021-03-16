@@ -56,6 +56,10 @@ const ViewPoll: FC = () => {
     setUserHasVoted(true);
   };
 
+  const sortOptions = (a: any, b: any) => {
+    return a.title > b.title ? 1 : -1;
+  };
+
   // Return JSX
   return (
     <div className="page-wrapper page-wrapper--view-poll">
@@ -66,7 +70,7 @@ const ViewPoll: FC = () => {
 
           {/* List poll options */}
           <ul className="option-list">
-            {poll.options.map((option, index) => (
+            {poll.options.sort(sortOptions).map((option, index) => (
               <li className="option-list__item" key={option.optionId}>
                 {!userHasVoted && (
                   <input
