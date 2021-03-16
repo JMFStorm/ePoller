@@ -2,7 +2,15 @@
 
 **See this app in live action: [https://epoller-react-app.herokuapp.com/]**
 
-## About:
+## Todos:
+
+- Add about page
+
+## About
+
+Create useless polls and vote.
+
+## Created with:
 
 - React client
 - Node server
